@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bonds>
+	<bond>
+		<issue>1.375 3/31/27</issue>
+		<price>100-24</price>
+	</bond>
+	<bond>
+		<issue>2.500 7/31/32</issue>
+		<price>98-13</price>
+	</bond>
+	<bond>
+		<issue>1.125 9/30/29</issue>
+		<price>96-17+</price>
+	</bond>
+	<bond>
+		<issue>2.375 1/31/37</issue>
+		<price>100-17</price>
+	</bond>
+	<bond>
+		<issue>7.000 12/31/37</issue>
+		<price>104-26+</price>
+	</bond>
+	<bond>
+		<issue>9.750 6/30/42</issue>
+		<price>106-30</price>
+	</bond>
+</bonds>
