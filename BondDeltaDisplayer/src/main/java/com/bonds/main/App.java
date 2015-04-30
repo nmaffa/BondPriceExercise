@@ -9,8 +9,10 @@ public class App {
 	
 	public static void main(String[] args) {
 		
-		BondReaderController bondReader1 = new BondReaderController("C:\\bond_prices_day1.xml");
-		BondReaderController bondReader2 = new BondReaderController("C:\\bond_prices_day2.xml");
+//		BondReaderController bondReader1 = new BondReaderController("C:\\bond_prices_day1.xml");
+//		BondReaderController bondReader2 = new BondReaderController("C:\\bond_prices_day2.xml");
+		BondReaderController bondReader1 = new BondReaderController("src/main/resources/com/bonds/xml/bond_prices_day1.xml");
+		BondReaderController bondReader2 = new BondReaderController("src/main/resources/com/bonds/xml/bond_prices_day2.xml");
 		BondCompareController bondCompare = new BondCompareController(bondReader1, bondReader2);
 		BondDisplayController bondDisplay = new BondDisplayController(bondCompare);
 		
