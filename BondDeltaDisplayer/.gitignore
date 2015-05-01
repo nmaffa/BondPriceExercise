@@ -1,2 +1,12 @@
+# Build stuff
 /bin/
 /build/
+/target*
+
+# Gradle files
+/.gradle*
+
+# Eclipse files
+.project
+.settings
+.classpath
