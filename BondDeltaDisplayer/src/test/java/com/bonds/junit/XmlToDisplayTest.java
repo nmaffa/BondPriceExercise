@@ -23,6 +23,8 @@ public class XmlToDisplayTest {
 	
 	@Before
 	public void initializeControllers(){
+		
+		//Arrange - initialize controllers for below tests
 		brc1 = new BondReaderController("src/main/resources/com/bonds/xml/bond_prices_day1.xml");
 		brc2 = new BondReaderController("src/main/resources/com/bonds/xml/bond_prices_day2.xml");
 		bcc = new BondCompareController(brc1, brc2);
