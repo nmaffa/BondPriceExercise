@@ -7,7 +7,8 @@ version = '1.0'
 jar {
     manifest {
         attributes 'Implementation-Title': 'Bond Coding Exercise',
-                   'Implementation-Version': version
+                   'Implementation-Version': version,
+                   'Main-Class': 'com.bonds.main.App'
     }
 }
 
