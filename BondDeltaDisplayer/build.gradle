@@ -4,6 +4,9 @@ apply plugin: 'application'
 
 sourceCompatibility = 1.7
 version = '1.0'
+
+mainClassName = "com.bonds.main.App"
+
 jar {
     manifest {
         attributes 'Implementation-Title': 'Bond Coding Exercise',
