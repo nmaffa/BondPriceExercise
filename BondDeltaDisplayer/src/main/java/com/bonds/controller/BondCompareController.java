@@ -26,8 +26,6 @@ public class BondCompareController {
 		this.day2Reader = day2Reader;
 	}
 
-
-
 	public Queue<Bond> compareBonds(){
 		
 		List<Bond> day1Bonds;
