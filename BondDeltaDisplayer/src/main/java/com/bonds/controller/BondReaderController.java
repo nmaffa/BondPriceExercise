@@ -26,6 +26,7 @@ public class BondReaderController{
 	
 	public int readXML(){
 		
+		bonds.clear();
 		bondCount = 0;
 			
 		DefaultHandler handler = new DefaultHandler() {

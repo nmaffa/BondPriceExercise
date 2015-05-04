@@ -6,7 +6,7 @@ import java.io.IOException;
 
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.xml.sax.SAXException;
 
@@ -16,11 +16,11 @@ import com.bonds.controller.BondReaderController;
 
 public class XmlReadTest {
 
-	private BondReaderController brc1;
-	private BondReaderController brc2;
+	private static BondReaderController brc1;
+	private static BondReaderController brc2;
 	
-	@Before
-	public void initializeControllers(){
+	@BeforeClass
+	public static void initializeControllers(){
 		
 		//Arrange - initialize controllers for below tests
 		brc1 = new BondReaderController("src/main/resources/com/bonds/xml/bond_prices_day1.xml");

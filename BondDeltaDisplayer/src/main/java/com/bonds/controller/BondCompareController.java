@@ -1,15 +1,9 @@
 package com.bonds.controller;
 
-import java.io.IOException;
 import java.math.BigDecimal;
-import java.util.Comparator;
 import java.util.List;
 import java.util.PriorityQueue;
 import java.util.Queue;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
 
 import com.bonds.comparator.CompareByChangeDescendingComparator;
 import com.bonds.model.Bond;
