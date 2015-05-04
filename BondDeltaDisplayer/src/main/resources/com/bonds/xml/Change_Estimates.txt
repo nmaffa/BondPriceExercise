@@ -1,0 +1,7 @@
+Change ( from day 1 to day 2 - no absolute Value)
++0.109375
+-0.09375
+-0.34375
++0.265625
++0.046875
+0
