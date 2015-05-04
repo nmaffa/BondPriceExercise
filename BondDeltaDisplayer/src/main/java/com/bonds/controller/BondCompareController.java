@@ -14,51 +14,52 @@ import org.xml.sax.SAXException;
 import com.bonds.comparator.CompareByChangeDescendingComparator;
 import com.bonds.model.Bond;
 
+
 public class BondCompareController {
 	
-	private BondReaderController day1Reader;
-	private BondReaderController day2Reader;
+//	private BondReaderController day1Reader;
+//	private BondReaderController day2Reader;
+	private List<Bond> day1Bonds;
+	private List<Bond> day2Bonds;
+	private Queue<Bond> sortedByChangeBonds;
 	
-	public BondCompareController(BondReaderController day1Reader,
-			BondReaderController day2Reader) {
+//	public BondCompareController(BondReaderController day1Reader,
+//			BondReaderController day2Reader) {
+//		super();
+//		this.day1Reader = day1Reader;
+//		this.day2Reader = day2Reader;
+//	}
+	
+	public BondCompareController(List<Bond> day1Bonds, List<Bond> day2Bonds){
 		super();
-		this.day1Reader = day1Reader;
-		this.day2Reader = day2Reader;
+		this.day1Bonds = day1Bonds;
+		this.day2Bonds = day2Bonds;
 	}
-
-	public Queue<Bond> compareBonds(){
+	
+	//Returns sum of absolute value of change between each bond pair 
+	public BigDecimal compareBonds(){
 		
-		List<Bond> day1Bonds;
-		List<Bond> day2Bonds;
+		BigDecimal sumOfChange = new BigDecimal(0);
 		
-		try {
-			day1Reader.readXML();
-			day2Reader.readXML();
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		day1Bonds = day1Reader.getBonds();
-		day2Bonds = day2Reader.getBonds();
-		
-		Queue<Bond> sortedByChangeBonds = new PriorityQueue<Bond>(1, new CompareByChangeDescendingComparator());
+		sortedByChangeBonds = new PriorityQueue<Bond>(1, new CompareByChangeDescendingComparator());
 		
 		for (int i = 0; i < day2Bonds.size(); i++){
 			BigDecimal decimalChange = day2Bonds.get(i).getPrice().subtract(day1Bonds.get(i).getPrice());
 			decimalChange = decimalChange.abs();
+			sumOfChange = sumOfChange.add(decimalChange);
 			day2Bonds.get(i).setChange(decimalChange);
 			sortedByChangeBonds.add(day2Bonds.get(i));
 		}
 		
-		return sortedByChangeBonds;
+		return sumOfChange;
 		
+	}
+	
+	
+	
+	public Queue<Bond> getSortedBonds(){
+		compareBonds();
+		return sortedByChangeBonds;
 	}
 
 }

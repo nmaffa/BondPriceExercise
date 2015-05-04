@@ -1,4 +1,4 @@
-package com.bonds.conversionmethods;
+package com.bonds.staticmethods;
 
 import java.math.BigDecimal;
 import java.math.MathContext;
@@ -96,6 +96,14 @@ public class ConversionMethods {
 		}
 		
 		return bondPrice;
+	}
+	
+	public static String changeTo32(Bond bond){
+		BigDecimal bd = bond.getChange().multiply(new BigDecimal(32));
+//		bd.setScale(1);
+//		bd.stripTrailingZeros();
+		
+		return bd.stripTrailingZeros().toPlainString();
 	}
 	
 }

@@ -3,6 +3,7 @@ package com.bonds.junit;
 import static org.junit.Assert.assertEquals;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import javax.xml.parsers.ParserConfigurationException;
 
@@ -27,8 +28,8 @@ public class XmlToDisplayTest {
 		//Arrange - initialize controllers for below tests
 		brc1 = new BondReaderController("src/main/resources/com/bonds/xml/bond_prices_day1.xml");
 		brc2 = new BondReaderController("src/main/resources/com/bonds/xml/bond_prices_day2.xml");
-		bcc = new BondCompareController(brc1, brc2);
-		bdc = new BondDisplayController(bcc);
+		bcc = new BondCompareController(brc1.readXmlAndGetBonds(), brc2.readXmlAndGetBonds());
+		bdc = new BondDisplayController(bcc.getSortedBonds());
 	}
 	
 	@Test
@@ -57,19 +58,33 @@ public class XmlToDisplayTest {
 		assertEquals(expected, actual);
 	}
 	
-//	@Test
-//	public void compareBondsTest(){
-//		
-//		//Arrange
-//		int expected = 6;
-//		
-//		//Act
-//		int actual = brc2.readXML();
-//		
-//		//Assert
-//		assertEquals(expected, actual);
-//		
-//	}
+	@Test
+	public void compareBondsTest(){
+		
+		//Arrange
+		BigDecimal expected = new BigDecimal(0.859375);
+		
+		//Act
+		BigDecimal actual = bcc.compareBonds();
+		
+		//Assert
+		assertEquals(expected, actual);
+		
+	}
+	
+	@Test
+	public void printBondsTest(){
+		
+		//Arrange
+		int expected = 6;
+		
+		//Act
+		int actual = bdc.printDay2Bonds();
+		
+		//Assert
+		assertEquals(expected, actual);
+		
+	}
 	
 	
 	

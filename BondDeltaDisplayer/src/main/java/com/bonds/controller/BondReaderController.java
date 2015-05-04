@@ -5,8 +5,8 @@ import javax.xml.parsers.*;
 import org.xml.sax.*;
 import org.xml.sax.helpers.*;
 
-import com.bonds.conversionmethods.ConversionMethods;
 import com.bonds.model.Bond;
+import com.bonds.staticmethods.ConversionMethods;
 
 import java.util.*;
 import java.io.*;
@@ -16,24 +16,18 @@ public class BondReaderController{
 	private List<Bond> bonds;
 	private String filename;
 	private int bondCount;
-//	private Bond bond;
-//	boolean isIssue = false;
-//	boolean isPrice = false;
 	
 	
 	public BondReaderController(String filename){
 		this.filename = filename;
 		bonds = new ArrayList<Bond>();
 		bondCount = 0;
-//		isIssue = false;
-//		isPrice = false;
 	}
 	
-	public int readXML() throws ParserConfigurationException, SAXException, IOException{
+	public int readXML(){
 		
-		SAXParserFactory factory = SAXParserFactory.newInstance();
-		SAXParser saxParser = factory.newSAXParser();
-				
+		bondCount = 0;
+			
 		DefaultHandler handler = new DefaultHandler() {
 		 
 			Bond bond;
@@ -91,7 +85,20 @@ public class BondReaderController{
 		 
 		};
 		
-		saxParser.parse(filename, handler);
+		SAXParserFactory factory = SAXParserFactory.newInstance();
+		SAXParser saxParser;
+		
+		try {
+			saxParser = factory.newSAXParser();
+			saxParser.parse(filename, handler);
+		} catch (ParserConfigurationException e) {
+			e.printStackTrace();
+		} catch (SAXException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 		return bondCount;
 	}
 	
@@ -99,7 +106,10 @@ public class BondReaderController{
 		return bonds;	
 	}
 	
-	
+	public List<Bond> readXmlAndGetBonds(){
+		readXML();
+		return bonds;
+	}
 
 }
 

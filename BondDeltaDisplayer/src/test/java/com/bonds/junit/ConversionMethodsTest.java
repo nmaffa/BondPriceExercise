@@ -6,8 +6,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.Date;
 
-import com.bonds.conversionmethods.ConversionMethods;
 import com.bonds.model.Bond;
+import com.bonds.staticmethods.ConversionMethods;
 
 import org.junit.Test;
 
